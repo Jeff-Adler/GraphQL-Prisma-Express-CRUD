@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('@/config.js');
+import { Logger } from '@utils/logger';
 import express from 'express';
 
 class App {
@@ -19,12 +20,12 @@ class App {
   }
 
   public listen() {
-    // this.app.listen(this.port, () => {
-    //   Logger.info(`=================================`);
-    //   Logger.info(`======= ENV: ${this.env} =======`);
-    //   Logger.info(`🚀 App listening on port ${this.port}`);
-    //   Logger.info(`=================================`);
-    // });
+    this.app.listen(this.port, () => {
+      Logger.info(`=================================`);
+      Logger.info(`======= ENV: ${this.env} =======`);
+      Logger.info(`🚀 App listening on port ${this.port}`);
+      Logger.info(`=================================`);
+    });
   }
 
   // private async connectToDatabase() {
