@@ -6,7 +6,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
-    "lib": ["esnext", "esnext.asynciterable"],
+    "lib": ["esnext"],
     "esModuleInterop": true,
     "target": "esnext"
   }
