@@ -8,6 +8,18 @@
     "strict": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "@controllers/*": ["src/controllers/*"],
+      "@exceptions/*": ["src/exceptions/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@customTypes/*": ["src/customTypes/*"],
+      "@utils/*": ["src/utils/*"],
+      "@/*": ["*"]
+    }
   }
 }
