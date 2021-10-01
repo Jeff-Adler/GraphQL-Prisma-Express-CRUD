@@ -1,3 +1,5 @@
-// const app = new App();
+import App from '@/src/app';
 
-// app.listen();
+const app = new App();
+
+app.listen();
