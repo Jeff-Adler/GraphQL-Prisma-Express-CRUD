@@ -31,6 +31,20 @@ const config = convict({
       env: 'DATABASE_URL',
     },
   },
+  cors: {
+    origin: {
+      doc: 'sets Access-Control-Allow-Origin',
+      format: Boolean,
+      default: true,
+      env: 'cors.origin',
+    },
+    credentials: {
+      doc: 'sets Access-Control-Allow-Credentials',
+      format: Boolean,
+      default: true,
+      env: 'cors.credentials',
+    },
+  },
 });
 
 const env = config.get('env');

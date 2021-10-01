@@ -1,6 +1,12 @@
 import config from '@/config';
+import { morganMiddleware } from '@middlewares/morganMiddleware';
 import { Logger } from '@utils/logger';
+import compression from 'compression';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import express from 'express';
+import helmet from 'helmet';
+import hpp from 'hpp';
 
 class App {
   public app: express.Application;
@@ -13,7 +19,7 @@ class App {
     this.env = config.get('env') || 'development';
 
     // this.env !== 'testing' && this.connectToDatabase();
-    // this.initializeMiddlewares();
+    this.initializeMiddlewares();
     // this.initializeRoutes();
     // this.initializeErrorHandling();
   }
@@ -32,14 +38,14 @@ class App {
   // }
 
   private initializeMiddlewares() {
-    // this.app.use(compression());
-    // this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
-    // this.app.use(cookieParser());
-    // this.app.use(express.json());
-    // this.app.use(express.urlencoded({ extended: true }));
-    // this.app.use(helmet());
-    // this.app.use(hpp({ whitelist: ['order'] }));
-    // this.app.use(morganMiddleware);
+    this.app.use(compression());
+    this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
+    this.app.use(cookieParser());
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(helmet());
+    this.app.use(hpp({ whitelist: ['order'] }));
+    this.app.use(morganMiddleware);
   }
 
   // private initializeRoutes() {
