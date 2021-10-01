@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('@/config.js');
+import config from '@/config';
 import morgan, { StreamOptions } from 'morgan';
 
 import { Logger } from '@utils/logger';

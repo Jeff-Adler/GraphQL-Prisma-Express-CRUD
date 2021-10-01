@@ -26,7 +26,7 @@ const config = convict({
   db: {
     database_url: {
       doc: 'URL for postgres DB',
-      format: 'url',
+      format: String,
       default: '',
       env: 'DATABASE_URL',
     },
@@ -34,8 +34,8 @@ const config = convict({
 });
 
 const env = config.get('env');
-config.loadFile(`./config/${env}.json`);
+config.loadFile(`./configs/${env}.json`);
 
 config.validate({ allowed: 'strict' });
 
-export default convict;
+export default config;
