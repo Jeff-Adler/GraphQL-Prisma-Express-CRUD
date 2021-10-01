@@ -12,8 +12,6 @@ module.exports = {
   },
   plugins: ['prettier'],
   rules: {
-    'prettier/prettier': 'error',
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    ...require('eslint-config-prettier').rules
+    'prettier/prettier': 'error'
   }
 };
