@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
+import IndexRoutes from '@routes/index.route';
 
 class App {
   public app: express.Application;
@@ -48,9 +49,9 @@ class App {
     this.app.use(morganMiddleware);
   }
 
-  // private initializeRoutes() {
-  //   this.app.use('/', new IndexRoutes().router);
-  // }
+  private initializeRoutes() {
+    this.app.use('/', new IndexRoutes().router);
+  }
 
   // private initializeErrorHandling() {
   //   this.app.use(errorMiddleware);
