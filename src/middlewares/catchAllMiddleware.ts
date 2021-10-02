@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { Logger } from '@utils/logger';
 
-export const catchAllMiddleware = (req: Request, res: Response, next: NextFunction): void => {
+export const catchAllMiddleware = (req: Request, res: Response, _next: NextFunction): void => {
   const status = 404;
   const message = 'Invalid request';
 
