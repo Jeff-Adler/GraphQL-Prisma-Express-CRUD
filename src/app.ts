@@ -36,10 +36,6 @@ class App {
     });
   }
 
-  // private async connectToDatabase() {
-  //   await createConnection(dbConnectionObj);
-  // }
-
   private initializeMiddlewares(): void {
     this.app.use(compression());
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
