@@ -8,10 +8,14 @@ generator client {
 }
 
 model Interaction {
-  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  mentee    Account  @relation("mentee", fields: [menteeId], references: [id])
+  mentor    Account  @relation("mentor", fields: [mentorId], references: [id])
+  menteeId  Int
+  mentorId  Int
 
+  @@id([menteeId, mentorId])
 }
 
 model Profile {
@@ -23,11 +27,13 @@ model Profile {
 }
 
 model Account {
-  id           Int           @id @default(autoincrement())
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  email        String        @unique
-  password     String
-  interactions Interaction[]
-  profile      Profile
+  id                  Int           @id @default(autoincrement())
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  email               String        @unique
+  password            String
+  interactions        Interaction[]
+  profile             Profile
+  interactingAsMentee Interaction[] @relation("mentee")
+  interactingAsMentor Interaction[] @relation("mentor")
 }
