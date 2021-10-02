@@ -8,6 +8,8 @@ import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import IndexRoutes from '@routes/index.route';
+import errorMiddleware from '@middlewares/errorMiddleware';
+import { catchAllMiddleware } from '@middlewares/catchAllMiddleware';
 
 class App {
   public app: express.Application;
@@ -21,11 +23,11 @@ class App {
 
     // this.env !== 'testing' && this.connectToDatabase();
     this.initializeMiddlewares();
-    // this.initializeRoutes();
-    // this.initializeErrorHandling();
+    this.initializeRoutes();
+    this.initializeErrorHandling();
   }
 
-  public listen() {
+  public listen(): void {
     this.app.listen(this.port, () => {
       Logger.info(`=================================`);
       Logger.info(`======= ENV: ${this.env} =======`);
@@ -38,7 +40,7 @@ class App {
   //   await createConnection(dbConnectionObj);
   // }
 
-  private initializeMiddlewares() {
+  private initializeMiddlewares(): void {
     this.app.use(compression());
     this.app.use(cors({ origin: config.get('cors.origin'), credentials: config.get('cors.credentials') }));
     this.app.use(cookieParser());
@@ -49,14 +51,14 @@ class App {
     this.app.use(morganMiddleware);
   }
 
-  private initializeRoutes() {
+  private initializeRoutes(): void {
     this.app.use('/', new IndexRoutes().router);
   }
 
-  // private initializeErrorHandling() {
-  //   this.app.use(errorMiddleware);
-  //   this.app.use(catchAllMiddleware);
-  // }
+  private initializeErrorHandling(): void {
+    this.app.use(errorMiddleware);
+    this.app.use(catchAllMiddleware);
+  }
 }
 
 export default App;
