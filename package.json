@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "ENVIRONMENT=development ts-node-dev --respawn --transpile-only -r tsconfig-paths/register dotenv/config src/server.ts dotenv_config_path=envs/.env.development",
+    "migrate:postgres:development": "dotenv -e envs/.env.development -- npx prisma migrate dev --name postgres-init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -41,6 +42,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.0.0",
     "express": "^4.17.1",
     "graphql": "^15.6.0",
     "helmet": "^4.6.0",
