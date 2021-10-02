@@ -13,10 +13,6 @@ class IndexRoutes implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.controller.index);
-
-    // this.router.use(`${this.path}users`, new UserRoutes().router);
-
-    // this.router.use(`${this.path}auth`, new AuthRoutes().router);
   }
 }
 
