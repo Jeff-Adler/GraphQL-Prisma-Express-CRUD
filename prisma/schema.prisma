@@ -22,7 +22,7 @@ model Profile {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  accout    Account  @relation(fields: [accountId], references: [id])
+  account   Account  @relation(fields: [accountId], references: [id])
   accountId Int      @unique
 }
 
@@ -32,8 +32,7 @@ model Account {
   updatedAt           DateTime      @updatedAt
   email               String        @unique
   password            String
-  interactions        Interaction[]
-  profile             Profile
+  profile             Profile?
   interactingAsMentee Interaction[] @relation("mentee")
   interactingAsMentor Interaction[] @relation("mentor")
 }
