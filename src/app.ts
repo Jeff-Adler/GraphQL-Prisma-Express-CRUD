@@ -17,8 +17,6 @@ class App {
   public env: string;
 
   public constructor() {
-    console.log('trying to construct');
-
     this.app = express();
     this.port = config.get('port') || 3000;
     this.env = config.get('env') || 'development';
@@ -29,7 +27,6 @@ class App {
   }
 
   public listen(): void {
-    console.log('trying to listen');
     this.app.listen(this.port, () => {
       Logger.info(`=================================`);
       Logger.info(`======= ENV: ${this.env} =======`);
