@@ -12,14 +12,14 @@ const prisma = new PrismaClient();
         email,
         password,
         profile: {
-          create: []
+          create: {}
         }
       }
     });
   }
 
   for (let j = 0; j < 50; j++) {
-    const result: Account[] = await prisma.$queryRaw`SELECT * FROM accounts ORDER BY random() LIMIT 2`;
+    const result = await prisma.$queryRaw<Account[]>`SELECT * FROM Account ORDER BY random() LIMIT 2`;
     await prisma.interaction.create({
       data: {
         mentee: { connect: result[0] },
