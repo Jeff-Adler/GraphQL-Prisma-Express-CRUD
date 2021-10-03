@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
     const email = faker.internet.email();
     const password = faker.internet.password();
 
-    await prisma.account.create({
+    const account = await prisma.account.create({
       data: {
         email,
         password,
@@ -16,16 +16,19 @@ const prisma = new PrismaClient();
         }
       }
     });
+    console.log('Account created: ' + JSON.stringify(account));
   }
 
   for (let j = 0; j < 50; j++) {
     const result = await prisma.$queryRaw<Account[]>`SELECT * FROM "Account" ORDER BY random() LIMIT 2`;
-    await prisma.interaction.create({
+    const interaction = await prisma.interaction.create({
       data: {
         menteeId: result[0].id,
         mentorId: result[1].id
       }
     });
+
+    console.log('Interaction created: ' + JSON.stringify(interaction));
   }
 
   await prisma.$disconnect();

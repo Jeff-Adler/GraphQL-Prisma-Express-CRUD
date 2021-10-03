@@ -6,7 +6,7 @@ const levels = {
   warn: 1,
   info: 2,
   http: 3,
-  debug: 4,
+  debug: 4
 };
 
 const level = () => {
@@ -20,7 +20,7 @@ const colors = {
   warn: 'yellow',
   info: 'green',
   http: 'magenta',
-  debug: 'white',
+  debug: 'white'
 };
 
 winston.addColors(colors);
@@ -35,14 +35,14 @@ const transports = [
   new winston.transports.Console(),
   new winston.transports.File({
     filename: 'logs/error.log',
-    level: 'error',
+    level: 'error'
   }),
-  new winston.transports.File({ filename: 'logs/all.log' }),
+  new winston.transports.File({ filename: 'logs/all.log' })
 ];
 
 export const Logger = winston.createLogger({
   level: level(),
   levels,
   format,
-  transports,
+  transports
 });
