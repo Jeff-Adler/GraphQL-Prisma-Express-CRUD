@@ -1,6 +1,6 @@
-import { resolve } from 'path';
+// import { resolve } from 'path';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config({ path: resolve(__dirname, `./envs/.env.${process.env.ENVIRONMENT}`) });
+// require('dotenv').config({ path: resolve(__dirname, `./envs/.env.${process.env.ENVIRONMENT}`) });
 import App from '@/src/app';
 import { PrismaClient } from '@prisma/client';
 

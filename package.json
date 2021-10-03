@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "ENVIRONMENT=development ts-node-dev --respawn --transpile-only -r tsconfig-paths/register dotenv/config src/server.ts dotenv_config_path=envs/.env.development",
-    "start:new": "ENVIRONMENT=development ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/server.ts",
+    "start": "ENVIRONMENT=development ts-node-dev --respawn --transpile-only -r tsconfig-paths/register -r dotenv/config src/server.ts dotenv_config_path=envs/.env.development",
     "migrate:postgres:development": "dotenv -e envs/.env.development -- npx prisma migrate dev --name postgres-init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

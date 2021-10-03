@@ -19,7 +19,7 @@ const config = convict({
   port: {
     doc: 'The port to bind.',
     format: 'port',
-    default: 8080,
+    default: 8000,
     env: 'PORT',
     arg: 'port'
   },
