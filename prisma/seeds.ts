@@ -21,8 +21,16 @@ const prisma = new PrismaClient();
 
   for (let j = 0; j < 50; j++) {
     const result = await prisma.$queryRaw<Account[]>`SELECT * FROM "Account" ORDER BY random() LIMIT 2`;
-    const interaction = await prisma.interaction.create({
-      data: {
+
+    const interaction = await prisma.interaction.upsert({
+      where: {
+        menteeId_mentorId: {
+          menteeId: result[0].id,
+          mentorId: result[1].id
+        }
+      },
+      update: {},
+      create: {
         menteeId: result[0].id,
         mentorId: result[1].id
       }
