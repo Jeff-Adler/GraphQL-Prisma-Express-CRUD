@@ -14,7 +14,7 @@ class InteractionService {
     return allInteractions;
   }
 
-  public findInteractionById = async (menteeId: number, mentorId: numbser): Promise<Interaction> => {
+  public findInteractionById = async (menteeId: number, mentorId: number): Promise<Interaction> => {
     const interaction: Interaction | null = await this.interactions.findUnique({
       where: {
         menteeId_mentorId: {
@@ -31,33 +31,19 @@ class InteractionService {
     return interaction;
   };
 
-  public findAccountByEmail = async (email: string): Promise<Account> => {
-    const account: Account | null = await this.accounts.findUnique({
-      where: {
-        email
-      }
-    });
-
-    if (!account) {
-      throw new HttpException(404, `Account of email ${email} not found`);
-    }
-
-    return account;
-  };
-
-  public createAccount = async (email: string, password: string): Promise<Account> => {
-    const account: Account = await this.accounts.create({
+  public createInteraction = async (menteeId: number, mentorId: number): Promise<Interaction> => {
+    const interaction: Interaction = await this.interactions.create({
       data: {
-        email,
-        password
+        menteeId,
+        mentorId
       }
     });
 
-    if (!account) {
-      throw new HttpException(404, `Error creating account`);
+    if (!interaction) {
+      throw new HttpException(404, `Error creating interaction`);
     }
 
-    return account;
+    return interaction;
   };
 }
 
