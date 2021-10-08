@@ -14,7 +14,7 @@ class InteractionService {
     return allInteractions;
   }
 
-  public findInteractionById = async (menteeId: number, mentorId: number): Promise<Interaction> => {
+  public findInteractionById = async (menteeId: number, mentorId: numbser): Promise<Interaction> => {
     const interaction: Interaction | null = await this.interactions.findUnique({
       where: {
         menteeId_mentorId: {

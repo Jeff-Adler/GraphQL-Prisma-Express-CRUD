@@ -1,5 +1,5 @@
 {
-  "name": "graphql-prisma-express-crud",
+  "name": "mentor_me_v3_api",
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
